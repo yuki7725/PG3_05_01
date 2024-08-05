@@ -2,15 +2,23 @@
 #include <Novice.h>
 
 
+//StageScene::StageScene()
+//{
+//}
+
 void StageScene::Init()
 {
+	inputHandle_ = new InputHandle();
+
+	inputHandle_->AssignMoveRightCommand2PressKeyD();
+	inputHandle_->AssignMoveLeftCommand2PressKeyA();
+
+	player_ = new Player();
 }
 
 void StageScene::Update()
 {
-	
 
-	
 		// キー入力結果を受け取る箱
 		char keys[256] = { 0 };
 		char preKeys[256] = { 0 };
@@ -51,7 +59,15 @@ void StageScene::Update()
 		if (preKeys[DIK_RETURN] == 0 && keys[DIK_RETURN]) {
 			sceneNo = CLEAR;
 		}
+
+		iCommand_ = inputHandle_->HandleInput();
+
+		//set command
+		if (this->iCommand_) {
+			iCommand_->Exec(*player_);
+		}
 	
+		player_->Update();
 }
 
 void StageScene::Draw()

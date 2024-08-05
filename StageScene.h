@@ -5,15 +5,25 @@
 #include "StageScene.h"
 #include "TitleScene.h"
 #include "ClearScene.h"
+#include "Player.h"
+#include "InputHandle.h"
 
 class StageScene:public IScene
 {
 public:
+
+	//StageScene();
+
 	void Init()override;
 	void Update()override;
 	void Draw()override;
 
 private:
+
+	InputHandle* inputHandle_ = nullptr;
+	ICommand* iCommand_ = nullptr;
+	Player* player_;
+
 	struct Vector2 {
 		float x;
 		float y;

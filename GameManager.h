@@ -6,6 +6,7 @@
 #include "TitleScene.h"
 #include "ClearScene.h"
 
+
 class GameManager {
 private:
 	//シーンを保持するメンバ関数
